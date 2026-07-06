@@ -14,7 +14,7 @@ const SOCIALS = [
 export default function Hero() {
   const { t } = useLanguage();
   return (
-    <header id="top" className="mx-auto max-w-295 px-8 pt-32.5 pb-24">
+    <header id="top" className="mx-auto max-w-295 px-6 pt-24 pb-16 sm:px-8 sm:pt-32.5 sm:pb-24">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.35fr_0.85fr] md:gap-16">
         {/* Left column */}
         <div className="animate-fade-up">
