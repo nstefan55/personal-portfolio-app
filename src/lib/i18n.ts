@@ -165,6 +165,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
         { title: "Databases", items: SKILL_ITEMS.databases },
         { title: "ORM & Caching", items: SKILL_ITEMS.orm },
         { title: "DevOps & Tools", items: SKILL_ITEMS.devops },
+        { title: "CMS & Build Tools", items: SKILL_ITEMS.CMS },
       ],
     },
     projects: {
@@ -291,6 +292,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
         { title: "Baze podataka", items: SKILL_ITEMS.databases },
         { title: "ORM i caching", items: SKILL_ITEMS.orm },
         { title: "DevOps i alati", items: SKILL_ITEMS.devops },
+        { title: "CMS sustavi i builderi", items: SKILL_ITEMS.CMS },
       ],
     },
     projects: {
