@@ -8,7 +8,7 @@ Mobile navigation + responsive polish
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -38,3 +38,7 @@ In Progress
 
 - Phases 1–5 complete (scaffold, static sections, i18n, contact form UI, contact API).
   All merged to main. See `/documentation` for per-phase developer notes.
+- Mobile navigation + responsive polish complete. Hamburger menu (< sm) with dropdown
+  panel, Escape-to-close, solid nav when open, always-visible language toggle, new
+  `nav.menu` key. Responsive scale-down on Hero, Contact card. See
+  `/documentation/phase-6-mobile-nav.md`.
