@@ -8,7 +8,7 @@ Phase 4 — Multi-step Contact Form (UI)
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -64,3 +64,9 @@ replacing the two static buttons. Bilingual, target completion < 30s.
   Converted Nav/Hero/About/Skills/Projects/Experience/Contact to client components
   reading `t`; wired the Nav EN/HR toggle. Footer stays server. EN SSR + HR-in-bundle
   verified; no hydration mismatch. Merged to main.
+- Phase 4 — Contact form UI: `ContactForm` stepper (intent → message → name → email,
+  progress dots, Back, 200ms transitions, per-step validation, honeypot + startedAt,
+  sending/success/error states) inside the Contact card; email/GitHub as secondary row.
+  `form` block added to the EN/HR dictionary. Build + SSR verified (interaction not
+  click-tested; submit needs Phase 5 API). Merged to main.
+- Backfilled `/documentation` for Phases 2–4 (Phase 1 already documented).
