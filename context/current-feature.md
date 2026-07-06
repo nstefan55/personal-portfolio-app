@@ -8,7 +8,7 @@ Phase 3 — Bilingual i18n (EN/HR client-side toggle)
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -61,3 +61,8 @@ change (route-based i18n is out of MVP scope).
   pills, whole card is a `next/link`), Experience, Contact shell (form deferred to
   Phase 4). Composed into `page.tsx`. Fixed a nested-`<a>` hydration error (inner
   "View →" is now a `<span>`). Build + browser verified. Merged to main.
+- Phase 3 — i18n: typed EN/HR dictionary (`lib/i18n.ts`), client `LanguageProvider`
+  (localStorage-persisted, EN default, syncs `<html lang>`), `useLanguage()` hook.
+  Converted Nav/Hero/About/Skills/Projects/Experience/Contact to client components
+  reading `t`; wired the Nav EN/HR toggle. Footer stays server. EN SSR + HR-in-bundle
+  verified; no hydration mismatch. Merged to main.
