@@ -8,7 +8,7 @@ Phase 2 — Branch B: Section Body (about + skills + projects + experience + con
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -58,3 +58,7 @@ All spacing/sizing uses the v4 numeric scale per `coding-standards.md`.
   toggle, CTA), Hero (badge, headline, CTAs, social icons via `react-icons`, code card,
   stat cards, `fadeUp`), Footer. Spacing utilities use the v4 numeric scale (see
   `coding-standards.md`). Build + browser verified. Merged to main.
+- Phase 2 — Branch B (body): About, Skills, Projects (logo images + per-project tag
+  pills, whole card is a `next/link`), Experience, Contact shell (form deferred to
+  Phase 4). Composed into `page.tsx`. Fixed a nested-`<a>` hydration error (inner
+  "View →" is now a `<span>`). Build + browser verified. Merged to main.
