@@ -7,11 +7,11 @@ import ContactForm from "@/components/sections/ContactForm";
 export default function Contact() {
   const { t } = useLanguage();
   return (
-    <section id="contact" className="mx-auto mt-12 max-w-295 px-8 pb-22.5">
-      <div className="relative overflow-hidden rounded-[22px] bg-brand-900 px-14 py-16.5 text-center text-white">
+    <section id="contact" className="mx-auto mt-12 max-w-295 px-6 pb-22.5 sm:px-8">
+      <div className="relative overflow-hidden rounded-[22px] bg-brand-900 px-6 py-12 text-center text-white sm:px-14 sm:py-16.5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(59,130,246,0.35),transparent_55%)]" />
         <div className="relative">
-          <h2 className="mb-4 font-heading text-[40px] font-bold tracking-[-1.5px]">
+          <h2 className="mb-4 font-heading text-[28px] font-bold tracking-[-1.5px] sm:text-[40px]">
             {t.contact.title}
           </h2>
           <p className="mx-auto mb-8.5 max-w-130 text-[18px] leading-[1.6] text-[#b8c7dd]">

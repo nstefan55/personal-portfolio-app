@@ -14,15 +14,12 @@ export default function Projects() {
       <h2 className="mt-2.5 mb-9 font-heading text-[34px] leading-[1.1] font-bold tracking-[-1px] text-brand-900">
         {t.projects.title}
       </h2>
-      <div className="flex cursor-pointer flex-col gap-5.5">
+      <div className="flex flex-col gap-5.5">
         {t.projects.items.map((project) => (
-          <Link
+          <div
             key={project.name}
-            href={project.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            className="grid grid-cols-1 items-center gap-7 rounded-[16px] border border-neutral-200 bg-white px-8 py-7.5 transition-[border-color,box-shadow] hover:border-brand-500 hover:shadow-[0_14px_34px_-22px_rgba(30,58,95,0.45)] sm:grid-cols-[auto_1fr_auto]"
           >
-            <div className="grid grid-cols-1 items-center gap-7 rounded-[16px] border border-neutral-200 bg-white px-8 py-7.5 transition-[border-color,box-shadow] hover:border-brand-500 hover:shadow-[0_14px_34px_-22px_rgba(30,58,95,0.45)] sm:grid-cols-[auto_1fr_auto]">
               <div className="flex h-30 w-30 items-center justify-center rounded-[13px] bg-brand-900 font-heading text-[24px] font-bold tracking-[-1px] text-white">
                 <Image
                   width={500}
@@ -65,8 +62,7 @@ export default function Projects() {
               <Link href={project.githubLink} className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
                 {t.projects.github}
               </Link>
-            </div>
-          </Link>
+          </div>
         ))}
       </div>
     </section>

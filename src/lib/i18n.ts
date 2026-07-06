@@ -31,6 +31,7 @@ export type Dictionary = {
     projects: string;
     experience: string;
     cta: string;
+    menu: string;
   };
   hero: {
     badge: string;
@@ -137,6 +138,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       projects: "Projects",
       experience: "Experience",
       cta: "Get in touch",
+      menu: "Menu",
     },
     hero: {
       badge: "Open to opportunities",
@@ -267,6 +269,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       projects: "Projekti",
       experience: "Iskustvo",
       cta: "Kontaktiraj me",
+      menu: "Izbornik",
     },
     hero: {
       badge: "Otvoren za prilike",
