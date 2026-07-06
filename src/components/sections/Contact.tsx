@@ -2,6 +2,7 @@
 
 import { SITE } from "@/lib/site";
 import { useLanguage } from "@/components/LanguageProvider";
+import ContactForm from "@/components/sections/ContactForm";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -16,22 +17,28 @@ export default function Contact() {
           <p className="mx-auto mb-8.5 max-w-130 text-[18px] leading-[1.6] text-[#b8c7dd]">
             {t.contact.sub}
           </p>
-          {/* Phase 4 replaces these direct links with the multi-step contact form. */}
-          <div className="flex flex-wrap justify-center gap-3.5">
+
+          <ContactForm />
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[14px] text-[#b8c7dd]">
+            <span>{t.form.orDirect}</span>
             <a
               href={`mailto:${SITE.email}`}
-              className="rounded-[10px] bg-white px-7 py-3.75 text-[15px] font-semibold text-brand-900"
+              className="font-medium text-white underline underline-offset-4 hover:text-brand-100"
             >
               {SITE.email}
             </a>
+            {/* <span aria-hidden className="text-white/30">
+              ·
+            </span>
             <a
               href={SITE.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[10px] border border-white/20 bg-white/12 px-7 py-3.75 text-[15px] font-semibold text-white"
+              className="font-medium text-white underline underline-offset-4 hover:text-brand-100"
             >
               GitHub
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

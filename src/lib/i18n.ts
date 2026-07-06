@@ -69,7 +69,35 @@ export type Dictionary = {
     title: string;
     sub: string;
   };
+  form: {
+    intentQuestion: string;
+    intentLabels: { project: string; job: string; hello: string };
+    messageQuestion: string;
+    messagePlaceholders: { project: string; job: string; hello: string };
+    nameQuestion: string;
+    namePlaceholder: string;
+    emailQuestion: string;
+    emailPlaceholder: string;
+    stepOf: string; // template: "Step {n} of {total}"
+    back: string;
+    next: string;
+    send: string;
+    sending: string;
+    successTitle: string;
+    successSub: string;
+    sendAnother: string;
+    errorMessage: string;
+    retry: string;
+    orDirect: string;
+    errors: {
+      message: string;
+      name: string;
+      email: string;
+    };
+  };
 };
+
+export type Intent = "project" | "job" | "hello";
 
 // Language-neutral project meta reused across both dictionaries.
 const ELECTIOUS = {
@@ -186,6 +214,40 @@ export const dictionaries: Record<Lang, Dictionary> = {
       title: "Let's build something.",
       sub: "Have a project, a role, or just want to say hi? My inbox is always open.",
     },
+    form: {
+      intentQuestion: "What brings you here?",
+      intentLabels: {
+        project: "Project",
+        job: "Job opportunity",
+        hello: "Just saying hi",
+      },
+      messageQuestion: "Tell me briefly about it",
+      messagePlaceholders: {
+        project: "A sentence or two about the project…",
+        job: "The role, the team, anything relevant…",
+        hello: "Go ahead :)",
+      },
+      nameQuestion: "Your name",
+      namePlaceholder: "Jane Doe",
+      emailQuestion: "Your email",
+      emailPlaceholder: "you@example.com",
+      stepOf: "Step {n} of {total}",
+      back: "Back",
+      next: "Next",
+      send: "Send",
+      sending: "Sending…",
+      successTitle: "Thanks — I'll reply within 48h.",
+      successSub: "Your message is on its way.",
+      sendAnother: "Send another",
+      errorMessage: "Something went wrong. Please try again.",
+      retry: "Try again",
+      orDirect: "Prefer email? Reach me directly:",
+      errors: {
+        message: "Please write between 10 and 2000 characters.",
+        name: "Please enter your name (2–100 characters).",
+        email: "Please enter a valid email address.",
+      },
+    },
   },
 
   hr: {
@@ -277,6 +339,40 @@ export const dictionaries: Record<Lang, Dictionary> = {
     contact: {
       title: "Izgradimo nešto zajedno.",
       sub: "Imaš projekt, poziciju ili samo želiš pozdraviti? Moj inbox je uvijek otvoren.",
+    },
+    form: {
+      intentQuestion: "Što te dovodi?",
+      intentLabels: {
+        project: "Projekt",
+        job: "Poslovna prilika",
+        hello: "Samo pozdrav",
+      },
+      messageQuestion: "Ukratko mi opiši",
+      messagePlaceholders: {
+        project: "Rečenica-dvije o projektu…",
+        job: "Pozicija, tim, sve što je relevantno…",
+        hello: "Samo naprijed :)",
+      },
+      nameQuestion: "Tvoje ime",
+      namePlaceholder: "Ivan Horvat",
+      emailQuestion: "Tvoj email",
+      emailPlaceholder: "ti@primjer.com",
+      stepOf: "Korak {n} od {total}",
+      back: "Natrag",
+      next: "Dalje",
+      send: "Pošalji",
+      sending: "Šaljem…",
+      successTitle: "Hvala — javit ću se unutar 48 h.",
+      successSub: "Tvoja poruka je na putu.",
+      sendAnother: "Pošalji još jednu",
+      errorMessage: "Nešto je pošlo po zlu. Pokušaj ponovno.",
+      retry: "Pokušaj ponovno",
+      orDirect: "Radije mailom? Piši mi izravno:",
+      errors: {
+        message: "Napiši između 10 i 2000 znakova.",
+        name: "Unesi svoje ime (2–100 znakova).",
+        email: "Unesi ispravnu email adresu.",
+      },
     },
   },
 };

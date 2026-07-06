@@ -2,47 +2,45 @@
 
 <!-- Feature Name -->
 
-Phase 3 — Bilingual i18n (EN/HR client-side toggle)
+Phase 4 — Multi-step Contact Form (UI)
 
 ## Status
 
 <!-- Not Started|In Progress|Completed -->
 
-Completed
+In Progress
 
 ## Goals
 
 <!-- Goals & requirements -->
 
-**Build Phase 3 — i18n** (per `scope-and-goals.md`)
+**Build Phase 4 — Contact form UI** (per `02 Prototypes/contact-form-flow.md`)
 
-Make the whole page bilingual with a client-side EN/HR toggle, no reload, no route
-change (route-based i18n is out of MVP scope).
+A Typeform-style, one-question-per-screen stepper inside the dark Contact card,
+replacing the two static buttons. Bilingual, target completion < 30s.
 
-- **Typed dictionary** (`src/lib/i18n.ts`) — `Lang` type + `dictionaries.en/hr`
-  covering nav, hero, stats, about, skills (group titles), projects (tag + desc),
-  experience (period/role/summary), contact. Sourced from each section's current EN
-  content + the prototype's HR copy.
-- **LanguageProvider** (`src/components/LanguageProvider.tsx`, client) — holds `lang`
-  state, persists to `localStorage` (`portfolio_lang`), EN default; exposes
-  `useLanguage()` → `{ lang, setLang, t }`.
-- Wrap the app in the provider (in `layout.tsx`).
-- Convert Nav, Hero, About, Skills, Projects, Experience, Contact to client components
-  reading from `useLanguage().t`. Wire the Nav EN/HR toggle to `setLang`.
-- Footer stays a server component (no translatable text — © year + proper nouns).
+- **4 steps:** intent (chip cards, auto-advance) → message (textarea, 10–2000) →
+  name (2–100) → email (format-validated).
+- **Nav/feedback:** 4 progress dots (`aria-label="Step n of 4"`, active = brand-500),
+  Back arrow on steps 2–4 (answers preserved), 200ms slide+fade transitions
+  (respect `prefers-reduced-motion`), auto-focus each step, `shadow-focus` rings,
+  inline errors (icon + text, error-700).
+- **Submit states:** sending (spinner), success (green check + "Thanks — I'll reply
+  within 48h" + "Send another"), error (retry, answers retained).
+- **Spam guards (client side):** hidden honeypot field, `startedAt` timestamp.
+- Direct email + GitHub links remain as a smaller secondary row beneath the form.
+- All copy (questions, placeholders, buttons, validation, success/error) added to the
+  typed dictionary in both EN/HR.
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- Language-neutral data stays as-is: project names/images/stack/hrefs, skill items,
-  company names, social links, the hero code card (it's code — same in both languages).
-- **HR copy needing review:** translations for content added after the prototype —
-  e.g. project tags "Dual Marketplace"/"University project"/"Master's Thesis" →
-  "Dvostrani marketplace"/"Fakultetski projekt"/"Diplomski rad"; degree
-  "Master Engineer in Information Technologies" → "Mag. ing. informacijskih tehnologija".
-- First render is EN on both server + client (localStorage read happens in `useEffect`),
-  so no hydration mismatch; a stored HR preference applies just after mount.
+- **Depends on Phase 5:** the form POSTs to `/api/contact`, which doesn't exist yet.
+  Until Phase 5, a real submit hits the error state — expected. Client validation,
+  step nav, transitions, and states are all fully testable now.
+- Payload: `{ intent, message, name, email, lang, honeypot, startedAt }`.
+- Uses the existing `useLanguage()` for `lang` + all copy.
 
 ## History
 

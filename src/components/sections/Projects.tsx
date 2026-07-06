@@ -62,6 +62,9 @@ export default function Projects() {
               <span className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
                 {t.projects.view}
               </span>
+              <span className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
+                {t.projects.view}
+              </span>
             </div>
           </Link>
         ))}
