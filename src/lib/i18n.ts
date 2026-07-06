@@ -13,6 +13,8 @@ export type Project = {
   desc: string;
   stack: string[];
   href: string;
+  link: string;
+  githubLink: string;
 };
 
 export type ExperienceEntry = {
@@ -58,6 +60,7 @@ export type Dictionary = {
     kicker: string;
     title: string;
     view: string;
+    github: string;
     items: Project[];
   };
   experience: {
@@ -104,12 +107,14 @@ const ELECTIOUS = {
   name: "Electious",
   image: "/images/logo/electious-logo.png",
   stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "SHA-256"],
+  githubLink: "#",
   href: "#",
 };
 const CONTRACTY = {
   name: "Contracty",
   image: "/images/logo/contracty-logo.png",
   stack: ["Next.js", "MongoDB", "NextAuth", "Cloudinary", "MapTiler"],
+  githubLink: "https://github.com/nstefan55/contracty-marketplace-app",
   href: "https://contracty.vercel.app/",
 };
 
@@ -172,16 +177,19 @@ export const dictionaries: Record<Lang, Dictionary> = {
       kicker: "03 / Work",
       title: "Featured Personal Projects",
       view: "View →",
+      github: "Github →",
       items: [
         {
           ...ELECTIOUS,
           tag: ["Master's Thesis"],
           desc: "Full-stack CRUD information system for electronic voting in organizations, with cryptographic vote verification via SHA-256 and Merkle trees.",
+          link: "#",
         },
         {
           ...CONTRACTY,
           tag: ["Dual Marketplace", "University project"],
           desc: "A two-sided marketplace connecting property owners with verified local contractors — map-based search, portfolios, reviews and direct project inquiries.",
+          link: "https://contracty.vercel.app/",
         },
       ],
     },
@@ -299,16 +307,19 @@ export const dictionaries: Record<Lang, Dictionary> = {
       kicker: "03 / Rad",
       title: "Istaknuti osobni projekti",
       view: "Pogledaj →",
+      github: "GitHub →",
       items: [
         {
           ...ELECTIOUS,
           tag: ["Diplomski rad"],
           desc: "Full-stack CRUD informacijski sustav za elektroničko glasovanje u organizacijama, s kriptografskom verifikacijom glasova putem SHA-256 i Merkle stabala.",
+          link: "#",
         },
         {
           ...CONTRACTY,
           tag: ["Dvostrani marketplace", "Fakultetski projekt"],
           desc: "Dvostrani marketplace koji povezuje vlasnike nekretnina s verificiranim lokalnim izvođačima — pretraga na karti, portfoliji, recenzije i izravni upiti za projekte.",
+          link: "https://contracty.vercel.app/",
         },
       ],
     },

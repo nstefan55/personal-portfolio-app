@@ -59,12 +59,12 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-              <span className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
+              <Link href={project.link} target="_blank" className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
                 {t.projects.view}
-              </span>
-              <span className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
-                {t.projects.view}
-              </span>
+              </Link>
+              <Link href={project.githubLink} className="flex items-center gap-1.5 text-[14px] font-semibold whitespace-nowrap text-brand-700">
+                {t.projects.github}
+              </Link>
             </div>
           </Link>
         ))}
