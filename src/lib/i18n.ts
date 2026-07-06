@@ -188,7 +188,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
         {
           ...CONTRACTY,
           tag: ["Dual Marketplace", "University project"],
-          desc: "A two-sided marketplace connecting property owners with verified local contractors — map-based search, portfolios, reviews and direct project inquiries.",
+          desc: "A two-sided marketplace connecting property owners with verified local contractors — search, portfolios, reviews and direct project inquiries.",
           link: "https://contracty.vercel.app/",
         },
       ],
@@ -318,7 +318,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
         {
           ...CONTRACTY,
           tag: ["Dvostrani marketplace", "Fakultetski projekt"],
-          desc: "Dvostrani marketplace koji povezuje vlasnike nekretnina s verificiranim lokalnim izvođačima — pretraga na karti, portfoliji, recenzije i izravni upiti za projekte.",
+          desc: "Dvostrani marketplace koji povezuje vlasnike nekretnina s verificiranim lokalnim izvođačima — pretraga, portfoliji, recenzije i izravni upiti za projekte.",
           link: "https://contracty.vercel.app/",
         },
       ],
