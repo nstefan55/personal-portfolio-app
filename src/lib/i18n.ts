@@ -121,6 +121,9 @@ const SKILL_ITEMS = {
   databases: ["PostgreSQL", "MongoDB", "MySQL"],
   orm: ["Prisma", "Mongoose", "Redis"],
   devops: ["Git", "GitHub Actions", "Vercel", "Claude Code", "Docker", "Postman", "Nginx"],
+  CMS & Builders: ["WordPress", "Elementor"],
+
+
 };
 
 export const dictionaries: Record<Lang, Dictionary> = {
