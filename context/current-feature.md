@@ -2,46 +2,48 @@
 
 <!-- Feature Name -->
 
-Phase 2 — Branch A: Section Frame (nav + hero + footer)
+Phase 2 — Branch B: Section Body (about + skills + projects + experience + contact shell)
 
 ## Status
 
 <!-- Not Started|In Progress|Completed -->
 
-Completed
+In Progress
 
 ## Goals
 
 <!-- Goals & requirements -->
 
-**Build Phase 2 — Static sections, Branch A: the frame** (per `scope-and-goals.md`)
+**Build Phase 2 — Static sections, Branch B: the body** (per `scope-and-goals.md`)
 
-Build the outer frame of the page, pixel-faithful to the approved prototype
-(`01 System Design/portfolio-website-template/project/Portfolio.dc.html`), EN only.
+Fill the middle of the page between hero and footer, pixel-faithful to the approved
+prototype (`Portfolio.dc.html`), EN only. All copy/data comes from the prototype.
 
-- **Nav** (`src/components/layout/Nav.tsx`, client) — sticky; transparent →
-  blurred `neutral-50` bg + border after 16px scroll. NŠ logo, section links,
-  static EN/HR segmented control (visual only — Phase 3 wires it), "Get in touch" CTA.
-- **Hero** (`src/components/hero/Hero.tsx`, server) — availability badge, 60px
-  headline, sub, "View projects" + "Contact me" CTAs, GitHub/LinkedIn/Email icon
-  links, dark brand-900 code card, two stat cards. `fadeUp` animation.
-- **Footer** (`src/components/layout/Footer.tsx`, server) — copyright + GitHub /
-  LinkedIn / Email links.
-- Compose all three into `src/app/page.tsx`.
+- **About** (`src/components/sections/About.tsx`) — kicker "01 / About", title, two
+  paragraphs, Education + Languages blocks.
+- **Skills** (`src/components/sections/Skills.tsx`) — kicker "02 / Stack", 6 group
+  cards with mono chips.
+- **Projects** (`src/components/sections/Projects.tsx`) — kicker "03 / Work",
+  Electious + Contracty rows (mark, tag, desc, stack, "View →").
+- **Experience** (`src/components/sections/Experience.tsx`) — kicker "04 / Path",
+  three roles (D8SOLUTIONS, Hrvatski Telekom, Combis).
+- **Contact** (`src/components/sections/Contact.tsx`) — dark brand-900 card shell:
+  title, sub, direct email + GitHub buttons. **Multi-step form is Phase 4** — this is
+  the static shell only.
+- Compose all five into `src/app/page.tsx` (Nav → Hero → …body… → Footer).
+
+All spacing/sizing uses the v4 numeric scale per `coding-standards.md`.
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- **EN only** this phase; Phase 3 extracts the bilingual dictionary + wires the toggle.
-  EN copy is inlined in components for now (per phased plan).
-- **Typography:** following `design-system-spec.md` (Noto Sans body / Poppins headings /
-  Roboto Mono accents). The prototype uses Poppins for *all* body copy — deliberate
-  deviation toward the named UI source of truth. Flip `--font-body` to Poppins if
-  literal prototype parity is wanted.
-- **Container width:** prototype uses `max-width:1180px` (not the token's 1280px) —
-  matching the prototype for visual parity via `max-w-[1180px]`.
-- `fadeUp` keyframes need adding to `globals.css`.
+- **EN only**; Phase 3 handles the bilingual dictionary + toggle.
+- **Resume download gap:** MVP spec wants a resume-download button in About (and a
+  resume link in Footer), but the approved prototype omits both, and the PDFs
+  (`resume_eng.pdf` / `resume_hr.pdf`) don't exist yet. Building pixel-faithful to the
+  prototype (no resume button); resume wiring is a follow-up once PDFs exist.
+- Server components throughout (no interactivity in these sections).
 
 ## History
 
