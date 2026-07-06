@@ -2,45 +2,43 @@
 
 <!-- Feature Name -->
 
-Phase 4 — Multi-step Contact Form (UI)
+Phase 5 — Contact API (`POST /api/contact`)
 
 ## Status
 
 <!-- Not Started|In Progress|Completed -->
 
-Completed
+In Progress
 
 ## Goals
 
 <!-- Goals & requirements -->
 
-**Build Phase 4 — Contact form UI** (per `02 Prototypes/contact-form-flow.md`)
+**Build Phase 5 — Contact API** (per `minimum-viable-product-mvp-spec.md` §3)
 
-A Typeform-style, one-question-per-screen stepper inside the dark Contact card,
-replacing the two static buttons. Bilingual, target completion < 30s.
+The server half of the contact flow — validates, spam-guards, and emails submissions.
 
-- **4 steps:** intent (chip cards, auto-advance) → message (textarea, 10–2000) →
-  name (2–100) → email (format-validated).
-- **Nav/feedback:** 4 progress dots (`aria-label="Step n of 4"`, active = brand-500),
-  Back arrow on steps 2–4 (answers preserved), 200ms slide+fade transitions
-  (respect `prefers-reduced-motion`), auto-focus each step, `shadow-focus` rings,
-  inline errors (icon + text, error-700).
-- **Submit states:** sending (spinner), success (green check + "Thanks — I'll reply
-  within 48h" + "Send another"), error (retry, answers retained).
-- **Spam guards (client side):** hidden honeypot field, `startedAt` timestamp.
-- Direct email + GitHub links remain as a smaller secondary row beneath the form.
-- All copy (questions, placeholders, buttons, validation, success/error) added to the
-  typed dictionary in both EN/HR.
+- `POST /api/contact` (App Router route handler).
+- **Validation:** zod schema for `{ intent, message(10–2000), name(2–100), email,
+  lang, honeypot, startedAt }`. Returns 400 on failure.
+- **Spam guards:** honeypot must be empty; min-time (reject if completed < 3s);
+  IP rate limit (max 5/hour) → 429.
+- **Delivery:** Resend → `CONTACT_TO` (default nikola.stefancic@gmail.com).
+  Subject `[Portfolio] {intent} — {name}`, reply-to = sender's email.
+- **Env:** `RESEND_API_KEY` (required), `CONTACT_TO`, `RESEND_FROM`
+  (default `onboarding@resend.dev`).
+- Returns 200 / 400 / 429 / 500.
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- **Depends on Phase 5:** the form POSTs to `/api/contact`, which doesn't exist yet.
-  Until Phase 5, a real submit hits the error state — expected. Client validation,
-  step nav, transitions, and states are all fully testable now.
-- Payload: `{ intent, message, name, email, lang, honeypot, startedAt }`.
-- Uses the existing `useLanguage()` for `lang` + all copy.
+- **Key dependency:** real delivery needs `RESEND_API_KEY` in `.env.local` (and Vercel
+  env). User is providing it. Validation/guard responses are testable without it.
+- **Rate limit is in-memory** (a `Map` keyed by IP). ponytail: fine for a low-traffic
+  single-instance portfolio; on multi-instance/serverless it's per-instance, not global
+  — upgrade to Upstash/Redis if abuse becomes real. Documented ceiling.
+- Pairs with the Phase 4 form, which already POSTs this exact payload.
 
 ## History
 
@@ -51,22 +49,11 @@ replacing the two static buttons. Bilingual, target completion < 30s.
 - Phase 1 — Scaffold / Foundation: design-system `@theme` tokens, three fonts via
   `next/font`, light-theme body defaults, minimal placeholder page, pinned
   `turbopack.root`, removed boilerplate SVGs. Build + browser verified. Merged to master.
-- Phase 2 — Branch A (frame): Nav (sticky scroll-state, section links, static EN/HR
-  toggle, CTA), Hero (badge, headline, CTAs, social icons via `react-icons`, code card,
-  stat cards, `fadeUp`), Footer. Spacing utilities use the v4 numeric scale (see
-  `coding-standards.md`). Build + browser verified. Merged to main.
-- Phase 2 — Branch B (body): About, Skills, Projects (logo images + per-project tag
-  pills, whole card is a `next/link`), Experience, Contact shell (form deferred to
-  Phase 4). Composed into `page.tsx`. Fixed a nested-`<a>` hydration error (inner
-  "View →" is now a `<span>`). Build + browser verified. Merged to main.
-- Phase 3 — i18n: typed EN/HR dictionary (`lib/i18n.ts`), client `LanguageProvider`
-  (localStorage-persisted, EN default, syncs `<html lang>`), `useLanguage()` hook.
-  Converted Nav/Hero/About/Skills/Projects/Experience/Contact to client components
-  reading `t`; wired the Nav EN/HR toggle. Footer stays server. EN SSR + HR-in-bundle
-  verified; no hydration mismatch. Merged to main.
-- Phase 4 — Contact form UI: `ContactForm` stepper (intent → message → name → email,
-  progress dots, Back, 200ms transitions, per-step validation, honeypot + startedAt,
-  sending/success/error states) inside the Contact card; email/GitHub as secondary row.
-  `form` block added to the EN/HR dictionary. Build + SSR verified (interaction not
-  click-tested; submit needs Phase 5 API). Merged to main.
-- Backfilled `/documentation` for Phases 2–4 (Phase 1 already documented).
+- Phase 2 — Branch A (frame): Nav, Hero, Footer. v4 numeric spacing scale established.
+  Merged to main.
+- Phase 2 — Branch B (body): About, Skills, Projects, Experience, Contact shell.
+  Nested-`<a>` fix. Merged to main.
+- Phase 3 — i18n: typed EN/HR dictionary, `LanguageProvider`, `useLanguage()`; sections
+  converted to client components; Nav toggle wired. Merged to main.
+- Phase 4 — Contact form UI: `ContactForm` stepper + `form` dictionary block; email/
+  GitHub secondary row. Merged to main. Backfilled `/documentation` for Phases 2–4.
