@@ -1,15 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Stack", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-];
+import { useLanguage } from "@/components/LanguageProvider";
+import { LANGS } from "@/lib/i18n";
 
 export default function Nav() {
+  const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,6 +14,13 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinks = [
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.stack, href: "#skills" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.experience, href: "#experience" },
+  ];
 
   return (
     <nav
@@ -29,14 +32,13 @@ export default function Nav() {
     >
       <div className="mx-auto flex h-17 max-w-295 items-center justify-between px-8">
         <a href="#top" className="flex items-center gap-2.75">
-          
           <span className="text-[16px] font-semibold text-brand-900">
             Nikola Štefančić
           </span>
         </a>
 
         <div className="flex items-center gap-1.5">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -46,29 +48,32 @@ export default function Nav() {
             </a>
           ))}
 
-          {/* Language toggle — visual only for now; Phase 3 wires the EN/HR switch. */}
           <div className="ml-2.5 flex items-center rounded-lg bg-neutral-100 p-0.75">
-            <button
-              type="button"
-              aria-pressed
-              className="rounded-md bg-white px-3 py-1.5 text-[13px] font-semibold text-brand-700 shadow-[0_1px_2px_rgba(0,0,0,0.08)]"
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              aria-pressed={false}
-              className="rounded-md bg-transparent px-3 py-1.5 text-[13px] font-semibold text-neutral-400"
-            >
-              HR
-            </button>
+            {LANGS.map((code) => {
+              const active = lang === code;
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setLang(code)}
+                  className={`rounded-md px-3 py-1.5 text-[13px] font-semibold uppercase transition-colors ${
+                    active
+                      ? "bg-white text-brand-700 shadow-[0_1px_2px_rgba(0,0,0,0.08)]"
+                      : "bg-transparent text-neutral-400 hover:text-neutral-600"
+                  }`}
+                >
+                  {code}
+                </button>
+              );
+            })}
           </div>
 
           <a
             href="#contact"
             className="ml-2.5 rounded-lg bg-brand-700 px-4.5 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-brand-600"
           >
-            Get in touch
+            {t.nav.cta}
           </a>
         </div>
       </div>

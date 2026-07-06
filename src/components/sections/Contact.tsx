@@ -1,17 +1,20 @@
+"use client";
+
 import { SITE } from "@/lib/site";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Contact() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="mx-auto mt-12 max-w-295 px-8 pb-22.5">
       <div className="relative overflow-hidden rounded-[22px] bg-brand-900 px-14 py-16.5 text-center text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(59,130,246,0.35),transparent_55%)]" />
         <div className="relative">
           <h2 className="mb-4 font-heading text-[40px] font-bold tracking-[-1.5px]">
-            Let&apos;s build something.
+            {t.contact.title}
           </h2>
           <p className="mx-auto mb-8.5 max-w-130 text-[18px] leading-[1.6] text-[#b8c7dd]">
-            Have a project, a role, or just want to say hi? My inbox is always
-            open.
+            {t.contact.sub}
           </p>
           {/* Phase 4 replaces these direct links with the multi-step contact form. */}
           <div className="flex flex-wrap justify-center gap-3.5">

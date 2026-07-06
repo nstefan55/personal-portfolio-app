@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Noto_Sans, Roboto_Mono } from "next/font/google";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -36,7 +37,9 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${notoSans.variable} ${robotoMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

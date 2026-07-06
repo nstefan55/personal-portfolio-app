@@ -2,48 +2,47 @@
 
 <!-- Feature Name -->
 
-Phase 2 — Branch B: Section Body (about + skills + projects + experience + contact shell)
+Phase 3 — Bilingual i18n (EN/HR client-side toggle)
 
 ## Status
 
 <!-- Not Started|In Progress|Completed -->
 
-Completed
+In Progress
 
 ## Goals
 
 <!-- Goals & requirements -->
 
-**Build Phase 2 — Static sections, Branch B: the body** (per `scope-and-goals.md`)
+**Build Phase 3 — i18n** (per `scope-and-goals.md`)
 
-Fill the middle of the page between hero and footer, pixel-faithful to the approved
-prototype (`Portfolio.dc.html`), EN only. All copy/data comes from the prototype.
+Make the whole page bilingual with a client-side EN/HR toggle, no reload, no route
+change (route-based i18n is out of MVP scope).
 
-- **About** (`src/components/sections/About.tsx`) — kicker "01 / About", title, two
-  paragraphs, Education + Languages blocks.
-- **Skills** (`src/components/sections/Skills.tsx`) — kicker "02 / Stack", 6 group
-  cards with mono chips.
-- **Projects** (`src/components/sections/Projects.tsx`) — kicker "03 / Work",
-  Electious + Contracty rows (mark, tag, desc, stack, "View →").
-- **Experience** (`src/components/sections/Experience.tsx`) — kicker "04 / Path",
-  three roles (D8SOLUTIONS, Hrvatski Telekom, Combis).
-- **Contact** (`src/components/sections/Contact.tsx`) — dark brand-900 card shell:
-  title, sub, direct email + GitHub buttons. **Multi-step form is Phase 4** — this is
-  the static shell only.
-- Compose all five into `src/app/page.tsx` (Nav → Hero → …body… → Footer).
-
-All spacing/sizing uses the v4 numeric scale per `coding-standards.md`.
+- **Typed dictionary** (`src/lib/i18n.ts`) — `Lang` type + `dictionaries.en/hr`
+  covering nav, hero, stats, about, skills (group titles), projects (tag + desc),
+  experience (period/role/summary), contact. Sourced from each section's current EN
+  content + the prototype's HR copy.
+- **LanguageProvider** (`src/components/LanguageProvider.tsx`, client) — holds `lang`
+  state, persists to `localStorage` (`portfolio_lang`), EN default; exposes
+  `useLanguage()` → `{ lang, setLang, t }`.
+- Wrap the app in the provider (in `layout.tsx`).
+- Convert Nav, Hero, About, Skills, Projects, Experience, Contact to client components
+  reading from `useLanguage().t`. Wire the Nav EN/HR toggle to `setLang`.
+- Footer stays a server component (no translatable text — © year + proper nouns).
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- **EN only**; Phase 3 handles the bilingual dictionary + toggle.
-- **Resume download gap:** MVP spec wants a resume-download button in About (and a
-  resume link in Footer), but the approved prototype omits both, and the PDFs
-  (`resume_eng.pdf` / `resume_hr.pdf`) don't exist yet. Building pixel-faithful to the
-  prototype (no resume button); resume wiring is a follow-up once PDFs exist.
-- Server components throughout (no interactivity in these sections).
+- Language-neutral data stays as-is: project names/images/stack/hrefs, skill items,
+  company names, social links, the hero code card (it's code — same in both languages).
+- **HR copy needing review:** translations for content added after the prototype —
+  e.g. project tags "Dual Marketplace"/"University project"/"Master's Thesis" →
+  "Dvostrani marketplace"/"Fakultetski projekt"/"Diplomski rad"; degree
+  "Master Engineer in Information Technologies" → "Mag. ing. informacijskih tehnologija".
+- First render is EN on both server + client (localStorage read happens in `useEffect`),
+  so no hydration mismatch; a stored HR preference applies just after mount.
 
 ## History
 

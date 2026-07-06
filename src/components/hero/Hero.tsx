@@ -1,6 +1,9 @@
+"use client";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { FiMail } from "react-icons/fi";
 import { SITE } from "@/lib/site";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const SOCIALS = [
   { label: "GitHub", href: SITE.github, Icon: FaGithub },
@@ -8,12 +11,8 @@ const SOCIALS = [
   { label: "Email", href: `mailto:${SITE.email}`, Icon: FiMail },
 ];
 
-const STATS = [
-  { value: "90+", label: "Lighthouse scores" },
-  { value: "2+", label: "Years building" },
-];
-
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <header id="top" className="mx-auto max-w-295 px-8 pt-32.5 pb-24">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.35fr_0.85fr] md:gap-16">
@@ -21,29 +20,26 @@ export default function Hero() {
         <div className="animate-fade-up">
           <span className="mb-6.5 inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.25 py-1.5 text-[13px] font-medium text-brand-700">
             <span className="h-1.75 w-1.75 rounded-full bg-success-500" />
-            Open to opportunities
+            {t.hero.badge}
           </span>
           <h1 className="mb-5.5 font-heading text-[40px] leading-[1.04] font-bold tracking-[-2px] text-balance text-brand-900 sm:text-[52px] md:text-[60px]">
-            Full-stack web developer building modern, reliable systems.
+            {t.hero.title}
           </h1>
           <p className="mb-9 max-w-140 text-[19px] leading-[1.6] text-neutral-600">
-            I design and ship web applications with React, Next.js and
-            TypeScript — from client-facing commercial sites to full-stack
-            information systems. Currently completing a Master&apos;s in
-            Information Technology in Zagreb.
+            {t.hero.sub}
           </p>
           <div className="flex flex-wrap items-center gap-3.5">
             <a
               href="#projects"
               className="rounded-[9px] bg-brand-700 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-brand-600"
             >
-              View projects
+              {t.hero.cta1}
             </a>
             <a
               href="#contact"
               className="rounded-[9px] border border-neutral-200 bg-white px-6 py-3.5 text-[15px] font-semibold text-brand-900 transition-colors hover:border-brand-500"
             >
-              Contact me
+              {t.hero.cta2}
             </a>
             <div className="ml-1.5 flex gap-2">
               {SOCIALS.map(({ label, href, Icon }) => (
@@ -98,7 +94,7 @@ export default function Hero() {
             </pre>
           </div>
           <div className="mt-4.5 flex gap-3.5">
-            {STATS.map((stat) => (
+            {t.hero.stats.map((stat) => (
               <div
                 key={stat.label}
                 className="flex-1 rounded-xl border border-neutral-200 bg-white px-4.5 py-4"
