@@ -1,10 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true
-  },
   reactCompiler: true,
   // Pin the workspace root — a stray package-lock.json in the home dir otherwise
   // makes Next infer the wrong root. __dirname is this project directory.
