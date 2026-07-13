@@ -13,7 +13,7 @@ projects, experience, contact shell.
 | `src/components/hero/Hero.tsx` | Badge, headline, sub, CTAs, GitHub/LinkedIn/Email icon buttons (`react-icons`), dark code card, two stat cards, `fadeUp`. |
 | `src/components/sections/About.tsx` | Kicker, title, two paragraphs, Education + Languages. |
 | `src/components/sections/Skills.tsx` | Six group cards, mono chips. |
-| `src/components/sections/Projects.tsx` | Electious + Contracty; whole card is a `next/link`; logo images (`public/images/logo/`); per-project tag pills. |
+| `src/components/sections/Projects.tsx` | Electius + Contracty; whole card is a `next/link`; logo images (`public/images/logo/`); per-project tag pills. |
 | `src/components/sections/Experience.tsx` | Three roles, two-column rows. |
 | `src/components/sections/Contact.tsx` | Dark brand-900 card; shell only (form added in Phase 4). |
 | `src/components/layout/Footer.tsx` | Copyright + social links. Stays a server component. |

@@ -108,7 +108,7 @@ export type Intent = "project" | "job" | "hello";
 // Language-neutral project meta reused across both dictionaries.
 const ELECTIUS = {
   name: "Electius",
-  image: "/images/logo/electious-logo.png",
+  image: "/images/logo/electius-logo.png",
   stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "SHA-256"],
   githubLink: "#",
   href: "#",

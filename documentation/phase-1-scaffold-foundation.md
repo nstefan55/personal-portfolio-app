@@ -28,7 +28,7 @@ Tailwind v4 auto-generates utilities from `@theme` — no JS config.
 
 - **Light theme only.** Dark mode is out of MVP scope (the generic `coding-standards.md`
   "dark mode first" note does not apply — design + MVP specs are the source of truth).
-- **Dropped** the Electious election-status colors from the design-spec `@theme` example
+- **Dropped** the Electius election-status colors from the design-spec `@theme` example
   (`--color-status-draft` etc.) — template leftover, not part of this portfolio.
 - **Spacing** uses Tailwind's default 4px scale; no custom spacing tokens needed.
 

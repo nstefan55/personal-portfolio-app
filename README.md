@@ -6,7 +6,7 @@ Bilingual (EN/HR) one-page portfolio for Nikola Štefančić, full-stack web dev
 
 ## Features
 
-- **Seven landing sections** — sticky nav, hero with code-card visual and stat cards, about with resume download, six grouped skill stacks, featured projects (Electious, Contracty), three-role experience timeline, dark contact CTA card, footer.
+- **Seven landing sections** — sticky nav, hero with code-card visual and stat cards, about with resume download, six grouped skill stacks, featured projects (Electius, Contracty), three-role experience timeline, dark contact CTA card, footer.
 - **Multi-step contact form** — Typeform-style, 4 steps (intent → message → name → email), one question per screen, auto-advancing, progress dots, 200 ms transitions with `prefers-reduced-motion` respected.
 - **Bilingual EN/HR** — client-side toggle in the nav, persisted to `localStorage`, EN default. All copy lives in one typed dictionary ([src/lib/i18n.ts](src/lib/i18n.ts)).
 - **Contact API** — `POST /api/contact` with zod validation, honeypot + minimum-fill-time spam guards, per-IP rate limiting, and email delivery via Resend with reply-to wired to the sender.
