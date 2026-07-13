@@ -106,8 +106,8 @@ export type Dictionary = {
 export type Intent = "project" | "job" | "hello";
 
 // Language-neutral project meta reused across both dictionaries.
-const ELECTIOUS = {
-  name: "Electious",
+const ELECTIUS = {
+  name: "Electius",
   image: "/images/logo/electious-logo.png",
   stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "SHA-256"],
   githubLink: "#",
@@ -186,7 +186,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       github: "Github →",
       items: [
         {
-          ...ELECTIOUS,
+          ...ELECTIUS,
           tag: ["Master's Thesis"],
           desc: "Full-stack CRUD information system for electronic voting in organizations, with cryptographic vote verification via SHA-256 and Merkle trees.",
           link: "#",
@@ -319,7 +319,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       github: "GitHub →",
       items: [
         {
-          ...ELECTIOUS,
+          ...ELECTIUS,
           tag: ["Diplomski rad"],
           desc: "Full-stack CRUD informacijski sustav za elektroničko glasovanje u organizacijama, s kriptografskom verifikacijom glasova putem SHA-256 i Merkle stabala.",
           link: "#",
