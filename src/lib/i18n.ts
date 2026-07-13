@@ -51,6 +51,8 @@ export type Dictionary = {
     eduSchool: string;
     langLabel: string;
     langValue: string;
+    resumeEn: string;
+    resumeHr: string;
   };
   skills: {
     kicker: string;
@@ -161,6 +163,8 @@ export const dictionaries: Record<Lang, Dictionary> = {
       eduSchool: "Velika Gorica · Information Systems",
       langLabel: "Languages",
       langValue: "English · German · Croatian",
+      resumeEn: "Resume — English",
+      resumeHr: "Resume — Croatian",
     },
     skills: {
       kicker: "02 / Stack",
@@ -292,6 +296,8 @@ export const dictionaries: Record<Lang, Dictionary> = {
       eduSchool: "Velika Gorica · Informacijski sustavi",
       langLabel: "Jezici",
       langValue: "Engleski · Njemački · Hrvatski",
+      resumeEn: "Životopis — engleski",
+      resumeHr: "Životopis — hrvatski",
     },
     skills: {
       kicker: "02 / Tehnologije",

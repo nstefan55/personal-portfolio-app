@@ -2,7 +2,7 @@
 
 <!-- Feature Name -->
 
-Mobile navigation + responsive polish
+Resume buttons (About section)
 
 ## Status
 
@@ -14,21 +14,25 @@ Completed
 
 <!-- Goals & requirements -->
 
-- **Mobile menu:** add a hamburger toggle to `Nav` (visible < sm). Opens a dropdown
-  panel with the section links + "Get in touch" CTA; closes on link select and on
-  Escape. Nav bar goes solid when the menu is open. Language toggle stays visible at
-  all widths. New `nav.menu` dictionary key (EN "Menu" / HR "Izbornik") for the
-  button's `aria-label`.
-- **Responsive pass:** make the Contact card padding + heading scale down on small
-  screens; sanity-check all sections at 390px (grids already stack).
+Per `context/features/resume-buttons-spec.md`:
+
+- Two resume buttons (English / Croatian) in the left column of the "01 / About"
+  section, under the title.
+- The button matching the active site language is highlighted (primary style,
+  `brand-700`); the other uses the secondary style (white, bordered).
+- Each opens its PDF (`/resume_eng.pdf`, `/resume_hr.pdf`) in a new tab where the
+  user can view/download it.
+- Copy PDFs from `01 System Design/portfolio-website-template/project/uploads/`
+  into `public/`.
+- New dictionary keys: `about.resumeEn`, `about.resumeHr`.
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- Desktop layout unchanged; the mobile panel and hamburger are `sm:hidden` / the
-  desktop links + CTA are hidden below `sm`.
-- Hamburger is 44×44 (WCAG touch target); `aria-expanded` + `aria-controls` wired.
+- Buttons follow the design-system button patterns already used in Hero
+  (primary = brand-700 fill / hover brand-600; secondary = white + border,
+  hover border-brand-500).
 
 ## History
 
@@ -42,3 +46,10 @@ Completed
   panel, Escape-to-close, solid nav when open, always-visible language toggle, new
   `nav.menu` key. Responsive scale-down on Hero, Contact card. See
   `/documentation/phase-6-mobile-nav.md`.
+
+### 2026-07-13
+
+- Resume buttons complete. Two buttons (EN/HR) in the About section left column,
+  active language highlighted (primary style), PDFs open in a new tab from
+  `public/`. New `about.resumeEn` / `about.resumeHr` dictionary keys. See
+  `/documentation/resume-buttons.md`.
