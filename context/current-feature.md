@@ -2,37 +2,38 @@
 
 <!-- Feature Name -->
 
-Resume buttons (About section)
+SEO (sitemap, robots, metadata, structured data)
 
 ## Status
 
 <!-- Not Started|In Progress|Completed -->
 
-Completed
+In Progress
 
 ## Goals
 
 <!-- Goals & requirements -->
 
-Per `context/features/resume-buttons-spec.md`:
+Per `context/features/seo-spec.md`:
 
-- Two resume buttons (English / Croatian) in the left column of the "01 / About"
-  section, under the title.
-- The button matching the active site language is highlighted (primary style,
-  `brand-700`); the other uses the secondary style (white, bordered).
-- Each opens its PDF (`/resume_eng.pdf`, `/resume_hr.pdf`) in a new tab where the
-  user can view/download it.
-- Copy PDFs from `01 System Design/portfolio-website-template/project/uploads/`
-  into `public/`.
-- New dictionary keys: `about.resumeEn`, `about.resumeHr`.
+- `src/app/sitemap.ts` — sitemap for the live domain (nikolastefancic.me).
+- `src/app/robots.ts` — generates `/robots.txt`; allow all, block `/api/`,
+  point at the sitemap.
+- Full page metadata in `layout.tsx`: `metadataBase`, canonical, keywords,
+  Open Graph + Twitter card (social sharing), robots directives.
+- Local SEO: JSON-LD `Person` structured data (Zagreb, Croatia; job title,
+  education, skills) with `sameAs` backlinks to GitHub and LinkedIn.
+- Keep Lighthouse 90+ (changes are head-only metadata; no runtime JS added).
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- Buttons follow the design-system button patterns already used in Hero
-  (primary = brand-700 fill / hover brand-600; secondary = white + border,
-  hover border-brand-500).
+- hreflang / route-based i18n is explicitly out of MVP scope
+  (`context/scope-and-goals.md`) — language toggle is client-side, so SEO
+  targets the EN default content on the single canonical URL.
+- One page only, so the sitemap has a single entry; section anchors don't
+  belong in sitemaps.
 
 ## History
 
@@ -53,3 +54,7 @@ Per `context/features/resume-buttons-spec.md`:
   active language highlighted (primary style), PDFs open in a new tab from
   `public/`. New `about.resumeEn` / `about.resumeHr` dictionary keys. See
   `/documentation/resume-buttons.md`.
+- SEO complete. `sitemap.ts`, `robots.ts`, full metadata (canonical, OG, Twitter,
+  robots directives), JSON-LD ProfilePage + Person with Zagreb address and
+  GitHub/LinkedIn `sameAs` backlinks, build-time OG image. See
+  `/documentation/seo.md`.

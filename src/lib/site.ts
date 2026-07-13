@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Nikola Štefančić",
+  url: "https://nikolastefancic.me",
   email: "nikola.stefancic@gmail.com",
   github: "https://github.com/nstefan55",
   linkedin:
