@@ -150,7 +150,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       cta2: "Contact me",
       stats: [
         { value: "90+", label: "Lighthouse scores" },
-        { value: "2+", label: "Years building" },
+        { value: "1+", label: "Years building" },
       ],
     },
     about: {
@@ -235,13 +235,13 @@ export const dictionaries: Record<Lang, Dictionary> = {
       intentLabels: {
         project: "Project",
         job: "Job opportunity",
-        hello: "Just saying hi",
+        hello: "Networking",
       },
       messageQuestion: "Tell me briefly about it",
       messagePlaceholders: {
         project: "A sentence or two about the project…",
         job: "The role, the team, anything relevant…",
-        hello: "Go ahead :)",
+        hello: "Leave a message here and let's connect!",
       },
       nameQuestion: "Your name",
       namePlaceholder: "Jane Doe",
@@ -283,7 +283,7 @@ export const dictionaries: Record<Lang, Dictionary> = {
       cta2: "Kontaktiraj me",
       stats: [
         { value: "90+", label: "Lighthouse ocjene" },
-        { value: "2+", label: "Godine iskustva" },
+        { value: "1+", label: "Godine iskustva" },
       ],
     },
     about: {
@@ -368,13 +368,13 @@ export const dictionaries: Record<Lang, Dictionary> = {
       intentLabels: {
         project: "Projekt",
         job: "Poslovna prilika",
-        hello: "Samo pozdrav",
+        hello: "Povezivanje",
       },
       messageQuestion: "Ukratko mi opiši",
       messagePlaceholders: {
         project: "Rečenica-dvije o projektu…",
         job: "Pozicija, tim, sve što je relevantno…",
-        hello: "Samo naprijed :)",
+        hello: "nešto o sebi :)",
       },
       nameQuestion: "Tvoje ime",
       namePlaceholder: "Ivan Horvat",

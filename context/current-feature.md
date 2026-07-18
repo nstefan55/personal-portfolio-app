@@ -2,7 +2,8 @@
 
 <!-- Feature Name -->
 
-SEO (sitemap, robots, metadata, structured data)
+Business email (business@nikolastefancic.me — Resend domain sending, branded
+inquiry template, Gmail alias receive/reply)
 
 ## Status
 
@@ -14,26 +15,26 @@ In Progress
 
 <!-- Goals & requirements -->
 
-Per `context/features/seo-spec.md`:
+Per `context/features/business-email-spec.md` (code) and
+`context/features/business-email-setup-guide.md` (manual DNS/Resend/Gmail):
 
-- `src/app/sitemap.ts` — sitemap for the live domain (nikolastefancic.me).
-- `src/app/robots.ts` — generates `/robots.txt`; allow all, block `/api/`,
-  point at the sitemap.
-- Full page metadata in `layout.tsx`: `metadataBase`, canonical, keywords,
-  Open Graph + Twitter card (social sharing), robots directives.
-- Local SEO: JSON-LD `Person` structured data (Zagreb, Croatia; job title,
-  education, skills) with `sameAs` backlinks to GitHub and LinkedIn.
-- Keep Lighthouse 90+ (changes are head-only metadata; no runtime JS added).
+- Contact form sends from `business@nikolastefancic.me` (verified domain),
+  with the lead's name as the from display name and reply-to set to the lead.
+- Branded HTML email template (`src/lib/email-template.ts`), design-system
+  colors, escaped user input, plain-text fallback kept.
+- Manual: root-domain forwarding `business@` → personal Gmail; Gmail
+  "Send mail as" via Resend SMTP (`smtp.resend.com`, separate API key) with a
+  Business signature so replies come from the alias.
 
 ## Notes
 
 <!-- Any extra notes -->
 
-- hreflang / route-based i18n is explicitly out of MVP scope
-  (`context/scope-and-goals.md`) — language toggle is client-side, so SEO
-  targets the EN default content on the single canonical URL.
-- One page only, so the sitemap has a single entry; section anchors don't
-  belong in sitemaps.
+- Resend is send-only — receiving requires a forwarding provider on the root
+  MX (Cloudflare Email Routing / registrar forwarding / ImprovMX). Open
+  decision: which one, depends on where DNS is hosted.
+- Form mail keeps `to: nikola.stefancic@gmail.com` directly (no forwarding
+  hop); forwarding only serves direct human mail to the alias.
 
 ## History
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema } from "@/lib/contact";
+import { inquiryEmailHtml } from "@/lib/email-template";
 
 const MIN_FILL_MS = 3000;
 const RATE_LIMIT = 5;
@@ -55,7 +56,12 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
   const to = process.env.CONTACT_TO || "nikola.stefancic@gmail.com";
-  const from = process.env.RESEND_FROM || "Portfolio <onboarding@resend.dev>";
+  const fromAddress =
+    process.env.RESEND_FROM_ADDRESS || "business@nikolastefancic.me";
+  // Display name is lead-controlled — strip chars that could smuggle in a
+  // different from address (a<evil@x.com>).
+  const fromName = data.name.replace(/[<>"@,;]/g, "").trim() || "Portfolio";
+  const from = `${fromName} via nikolastefancic.me <${fromAddress}>`;
 
   try {
     const { error } = await resend.emails.send({
@@ -63,6 +69,7 @@ export async function POST(request: Request) {
       to,
       replyTo: data.email,
       subject: `[Portfolio] ${data.intent} — ${data.name}`,
+      html: inquiryEmailHtml(data),
       text: [
         `Intent: ${data.intent}`,
         `Name: ${data.name}`,
