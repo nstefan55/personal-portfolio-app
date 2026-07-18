@@ -9,7 +9,7 @@ inquiry template, Gmail alias receive/reply)
 
 <!-- Not Started|In Progress|Completed -->
 
-In Progress
+Completed
 
 ## Goals
 
@@ -59,3 +59,13 @@ Per `context/features/business-email-spec.md` (code) and
   robots directives), JSON-LD ProfilePage + Person with Zagreb address and
   GitHub/LinkedIn `sameAs` backlinks, build-time OG image. See
   `/documentation/seo.md`.
+
+### 2026-07-18
+
+- Business email complete. Form sends from `business@nikolastefancic.me` with
+  the lead's name as sanitized from display name, branded HTML template
+  (`src/lib/email-template.ts`) with escaped input + plain-text fallback,
+  `SITE.email` switched to the alias, "hello" intent reworded to Networking,
+  new enlarged NŠ favicon. Manual DNS/Resend/Gmail steps per
+  `context/features/business-email-setup-guide.md` remain a deploy-time task.
+  See `/documentation/business-email.md`.
